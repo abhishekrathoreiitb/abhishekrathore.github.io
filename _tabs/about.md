@@ -4,8 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# About Me
-
 I’m Abhishek, a technology professional who enjoys exploring the space where **technology, engineering, data, and real-world problems** meet.
 
 My work has given me the opportunity to spend time around financial technology, payment systems, APIs, enterprise platforms, and large-scale technology ecosystems. Over time, my curiosity has expanded beyond simply building or operating systems—I’ve become increasingly interested in understanding **why systems behave the way they do, how they can be made smarter, and what happens when we experiment with new approaches**.

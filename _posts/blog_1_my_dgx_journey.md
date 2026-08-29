@@ -8,7 +8,7 @@ I have been doing a lot of experiments related to Machine Learning, mostly on my
 
 That's when I really understood the importance of a GPU.
 
-**[IMAGE 1 — CPU vs GPU parallel processing]**
+![CPU vs GPU parallel processing](/assets/img/dgx-spark/CPU_VS_GPU.png)
 
 CPUs are powerful, but they are built around a relatively small number of powerful cores. Neural networks don't work quite like that. The real work in a neural network is heavy matrix multiplication, done again and again, at scale. A CPU has limited cores, while a GPU has thousands of simpler cores, all designed to handle many operations in parallel. GPUs are built to finish many small tasks at once, even if each individual task is relatively simple.
 
@@ -52,13 +52,13 @@ Some hope arrived when the RTX 5090 launched. I thought this could be my startin
 
 I looked at a MacBook next, but I already knew MLX inferencing is still far behind CUDA. Then I considered the AMD Strix Halo — 128GB of unified memory, which sounded great on paper, but it came with its own set of limitations.
 
-**[IMAGE 2 — RTX 5090 → MacBook → Strix Halo → DGX Spark]**
+![My NVIDIA DGX Spark](/assets/img/dgx-spark/Serach_of_machine.png)
 
 Then, in April, at an event in Mumbai, I saw a firm selling the NVIDIA DGX Spark to corporates and smaller educational institutes. I reached out to them, followed up for quite some time, asking if I could get one for personal use. Somehow, they made it happen. I received it by the end of May.
 
 ## Now, the elephant in the room: the DGX Spark
 
-**[IMAGE 3 — LARGE HERO IMAGE OF NVIDIA DGX SPARK]**
+![Large Hero](/assets/img/dgx-spark/Asus_Ascent_GX10.png)
 
 Here's what makes it worth the wait.
 

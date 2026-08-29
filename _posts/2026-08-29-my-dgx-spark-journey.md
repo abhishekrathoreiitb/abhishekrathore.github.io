@@ -76,7 +76,8 @@ The one drawback I found is data speed. Because it uses LPDDR5 RAM, it runs at a
 But the real advantage is the NVIDIA CUDA ecosystem. PyTorch, TensorFlow, JAX — all of it, working the way it's meant to. TensorRT brings much better LLM optimization, and there's a whole line of NVIDIA tools around LLM inferencing, AI Ops, Guardrails, and Agentic workflows.
 
 That ecosystem alone was a huge addition. While I was getting into inferencing first, I found that the best quantization techniques are still built around the NVIDIA architecture. My interest has now moved toward production-grade inference engines — ones that give far better configuration and optimization than a simple Ollama or LM Studio setup.
-![Large Hero](/assets/img/dgx-spark/IMG_6675.jpg)
+
+![My DGX WorkStation](/assets/img/dgx-spark/IMG_6675.jpeg)
 ## What's next
 
 Before I move into model training, I want to share a few more posts on the research side first. Up next: inferencing, quantization techniques, and optimizing the model itself. After that, KV cache and faster token generation.

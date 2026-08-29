@@ -77,8 +77,6 @@ But the real advantage is the NVIDIA CUDA ecosystem. PyTorch, TensorFlow, JAX �
 
 That ecosystem alone was a huge addition. While I was getting into inferencing first, I found that the best quantization techniques are still built around the NVIDIA architecture. My interest has now moved toward production-grade inference engines — ones that give far better configuration and optimization than a simple Ollama or LM Studio setup.
 
-**[IMAGE 4 — ACTUAL SCREENSHOT OF MY DGX SPARK RUNNING A MODEL]**
-
 ## What's next
 
 Before I move into model training, I want to share a few more posts on the research side first. Up next: inferencing, quantization techniques, and optimizing the model itself. After that, KV cache and faster token generation.

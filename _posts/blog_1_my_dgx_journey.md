@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Know Your GPU as an Experiment: My DGX Spark Journey"
+date: 2026-08-29
+categories: [AI, Machine Learning, GPU]
+tags: [DGX Spark, NVIDIA, LLM, AI Engineering, GPU, Inference]
+---
+
 # Know Your GPU as an Experiment: My DGX Spark Journey
 
 A long story. Very long. But every part of it matters, so bear with me.

@@ -52,13 +52,13 @@ Some hope arrived when the RTX 5090 launched. I thought this could be my startin
 
 I looked at a MacBook next, but I already knew MLX inferencing is still far behind CUDA. Then I considered the AMD Strix Halo — 128GB of unified memory, which sounded great on paper, but it came with its own set of limitations.
 
-![My NVIDIA DGX Spark](/assets/img/dgx-spark/Serach_of_machine.png)
+![My NVIDIA DGX Spark](/assets/img/dgx-spark/Search_of_machine.png)
 
 Then, in April, at an event in Mumbai, I saw a firm selling the NVIDIA DGX Spark to corporates and smaller educational institutes. I reached out to them, followed up for quite some time, asking if I could get one for personal use. Somehow, they made it happen. I received it by the end of May.
 
 ## Now, the elephant in the room: the DGX Spark
 
-![Large Hero](/assets/img/dgx-spark/Asus_Ascent_GX10.png)
+![Large Hero](/assets/img/dgx-spark/ASUS_Ascent_GX10.png)
 
 Here's what makes it worth the wait.
 

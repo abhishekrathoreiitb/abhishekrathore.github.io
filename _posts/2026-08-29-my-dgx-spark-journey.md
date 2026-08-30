@@ -63,7 +63,7 @@ Then, in April, at an event in Mumbai, I saw a firm selling the NVIDIA DGX Spark
 
 ## Now, the elephant in the room: the DGX Spark
 
-![Large Hero](/assets/img/dgx-spark/ASUS_Ascent_GX10.png)
+![Large Hero](/assets/img/dgx-spark/asus_cx10.jpeg)
 
 Here's what makes it worth the wait.
 

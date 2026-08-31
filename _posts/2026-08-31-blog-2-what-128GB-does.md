@@ -16,6 +16,8 @@ But something unexpected happened. For almost the first few weeks, I didn't trai
 
 **Where is all this memory actually going?**
 
+![Memory](/assets/img/post2/memory_usage.png)
+
 Because the moment you start looking at modern AI systems closely, nothing behaves quite the way you expect.
 
 ## The first assumption
@@ -40,7 +42,7 @@ Then I realized I wasn't really learning models.
 
 ## Hugging Face changed the way I look at models
 
-Before local AI, I mostly thought about models in terms of capability — which model is smarter, which one scores higher.
+Before local AI, I mostly thought about models in terms of capability - which model is smarter, which one scores higher.
 
 Once you start running models locally, a different set of questions shows up.
 
@@ -58,6 +60,7 @@ A good AI engineer cannot think only about models. They also need to think about
 
 ## The day quantization finally made sense
 
+![Quantization](/assets/img/post2/model_comparison.png)
 For a long time, quantization felt like one of those AI words everyone uses but nobody properly explains.
 
 Then I started looking at it differently.
@@ -83,8 +86,9 @@ The model would load fine. Memory usage looked normal.
 Then I would start chatting, and memory kept climbing.
 
 More questions. More tokens. More context. More memory.
+![KV Cache](/assets/img/post2/KV_Cache.png)
 
-The model was building and holding on to a KV Cache — storing the key and value states from previous tokens so they don't have to be recomputed during subsequent generation.
+The model was building and holding on to a KV Cache - storing the key and value states from previous tokens so they don't have to be recomputed during subsequent generation.
 
 The longer the conversation gets, the bigger the cache grows.
 
@@ -112,7 +116,7 @@ The deeper I went, the more interesting it got.
 
 AI isn't only about neural networks.
 
-It's also about scheduling, memory management, caching, batching, GPU utilization — all the engineering that has to work together underneath.
+It's also about scheduling, memory management, caching, batching, GPU utilization - all the engineering that has to work together underneath.
 
 ## Why I didn't start with training
 
@@ -166,7 +170,7 @@ And KV Cache is now leading me towards inference engines, batching strategies, a
 
 So before I touch LoRA, fine-tuning, or model training, I want to spend some more time understanding how modern inference systems actually work.
 
-Long story long — I bought a 128GB AI workstation expecting to learn training.
+Long story long - I bought a 128GB AI workstation expecting to learn training.
 
 Instead, it pushed me towards understanding inference first.
 

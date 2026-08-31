@@ -1,4 +1,10 @@
-# So… What Can 128GB Actually Do?
+---
+layout: post
+title: "So… What Can 128GB Actually Do?"
+date: 2026-08-31 23:52:00 +0530
+categories: [AI, Engineering]
+tags: [dgx-spark, gpu-memory, llm, inference, quantization, kv-cache, ai-engineering]
+---
 
 A long story again. Maybe not as long as the last one. But this is the part nobody told me when I started.
 

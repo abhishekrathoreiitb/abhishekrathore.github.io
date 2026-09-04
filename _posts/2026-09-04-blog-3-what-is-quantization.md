@@ -4,6 +4,7 @@ title: "So… What Exactly Is Quantization?"
 date: 2026-09-04 13:18:00 +0530
 categories: [AI, Engineering]
 tags: [quantization, nvfp4, llm, inference, gpu-memory, model-optimization, ai-engineering]
+mermaid: true
 ---
 
 

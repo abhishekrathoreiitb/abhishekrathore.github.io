@@ -1,3 +1,12 @@
+---
+layout: post
+title: "So… What Exactly Is Quantization?"
+date: 2026-09-04 13:18:00 +0530
+categories: [AI, Engineering]
+tags: [quantization, nvfp4, llm, inference, gpu-memory, model-optimization, ai-engineering]
+---
+
+
 A long story again. Maybe not as long as the DGX Spark one. But this is the chapter where the theory finally met the terminal.
 
 The first post was about **why I bought the machine**. The second was about **where my 128GB of unified memory was actually disappearing**.
@@ -23,10 +32,55 @@ So I drew my own.
 Here's the picture I ended up with:
 
 ```
-Layer 1: HardwareDGX SparkRTX 5090Mac StudioStrix HaloLayer 2: Runtime / Inference FrameworkTensorRT-LLMvLLMPyTorchMLXllama.cppLayer 3: Model Representation / FormatSafetensorsGGUFONNXLayer 4: Quantization MethodGPTQAWQSmoothQuantRTNLayer 5: Number PrecisionFP16BF16FP8FP4INT8INT4Layer 6: Model ArchitectureDenseMoE
+Layer 1: Hardware
+
+DGX Spark
+RTX 5090
+Mac Studio
+Strix Halo
+
+
+Layer 2: Runtime / Inference Framework
+
+TensorRT-LLM
+vLLM
+PyTorch
+MLX
+llama.cpp
+
+
+Layer 3: Model Representation / Format
+
+Safetensors
+GGUF
+ONNX
+
+
+Layer 4: Quantization Method
+
+GPTQ
+AWQ
+SmoothQuant
+RTN
+
+
+Layer 5: Number Precision
+
+FP16
+BF16
+FP8
+FP4
+INT8
+INT4
+
+
+Layer 6: Model Architecture
+
+Dense
+MoE
 ```
 
-**[IMAGE PLACEHOLDER — LLM INFERENCE ICEBERG]**
+![LLM Inference Iceberg](/assets/img/post3/tip_of_iceberg.png)
 
 *The LLM inference iceberg — what we see on the surface is only a small part of the stack underneath.*
 
@@ -159,8 +213,22 @@ It split into different concepts.
 
 One useful distinction was:
 
-```
-                    QUANTIZATION                         │              ┌──────────┴──────────┐              │                     │           FORMAT                 METHOD              │                     │       ┌──────┼──────┐        ┌─────┼──────────┐       │      │      │        │     │          │      INT4   FP8   NVFP4     AWQ   GPTQ   SmoothQuant
+## Quantization Flow Diagram
+
+```mermaid
+flowchart TD
+    Q["QUANTIZATION"]
+
+    Q --> F["FORMAT"]
+    Q --> M["METHOD"]
+
+    F --> I["INT4"]
+    F --> P["FP8"]
+    F --> N["NVFP4"]
+
+    M --> A["AWQ"]
+    M --> G["GPTQ"]
+    M --> S["SmoothQuant"]
 ```
 
 The format describes **how the numbers are represented**.
@@ -184,7 +252,13 @@ There are two broad approaches I kept seeing.
 ### PTQ — Post-Training Quantization
 
 ```
-Train Model     ↓Finished Model     ↓Quantize     ↓Deploy
+Train Model
+     ↓
+Finished Model
+     ↓
+Quantize
+     ↓
+Deploy
 ```
 
 The model is already trained.
@@ -194,7 +268,13 @@ You take the finished model and quantize it afterwards.
 ### QAT — Quantization-Aware Training
 
 ```
-Training    ↓Simulate Quantization    ↓Adapt Model    ↓Final Quantized Model
+Training
+    ↓
+Simulate Quantization
+    ↓
+Adapt Model
+    ↓
+Final Quantized Model
 ```
 
 Here, the training process takes the effects of quantization into account, allowing the model to adapt to the lower-precision representation.
@@ -203,7 +283,7 @@ QAT sounds attractive.
 
 But it also means training again.
 
-And I have **zero interest in retraining a giant model just to learn what quantization does to it.** 😄
+And I have **zero interest in retraining a giant model just to learn what quantization does to it.** 
 
 I wanted something much simpler.
 
@@ -261,10 +341,13 @@ Running directly on the DGX Spark.
 I used three versions:
 
 ```
-NAME                           SIZEllama3.1:8b-instruct-fp16     16 GBllama3.1:8b-instruct-q8_0     8.5 GBllama3.1:8b-instruct-q4_K_M   4.9 GB
+NAME                           SIZE
+llama3.1:8b-instruct-fp16     16 GB
+llama3.1:8b-instruct-q8_0     8.5 GB
+llama3.1:8b-instruct-q4_K_M   4.9 GB
 ```
 
-**[IMAGE PLACEHOLDER - OLLAMA MODEL LIST SCREENSHOT]**
+![oLLAMA List](/assets/img/post3/llma_31_quantz.png)
 
 The size difference alone was already interesting.
 
@@ -294,7 +377,7 @@ The results looked like this:
 | Q8_0   | 7.95 GB  | 4.27 s    | 728.2 tok/s  | **29.11 tok/s** | **1.84×** |
 | FP16   | 14.97 GB | 8.17 s    | 402.2 tok/s  | **15.83 tok/s** | **1.00×** |
 
-**[IMAGE PLACEHOLDER - BENCHMARK TERMINAL / RESULTS SCREENSHOT]**
+![Benchmark](/assets/img/post3/benchmark_ollama.png)
 
 Q4_K_M generated almost **2.7× faster** than FP16 in this experiment, while taking up roughly a third of the model storage.
 
@@ -382,7 +465,7 @@ I'd call it a **lead worth chasing**.
 
 And that's actually more interesting to me.
 
-**[IMAGE PLACEHOLDER - OUTPUT COMPARISON: FP16 vs Q8_0 vs Q4_K_M]**
+![prompt results](/assets/img/post3/ollama_results.png)
 
 Now I had two things I could measure.
 
@@ -421,7 +504,13 @@ NVFP4 uses a 4-bit floating-point representation, with finer-grained scaling app
 Conceptually:
 
 ```
-16 values    ↓4-bit FP4 values    +local FP8 scale    +global FP32 scale
+16 values
+    ↓
+4-bit FP4 values
+    +
+local FP8 scale
+    +
+global FP32 scale
 ```
 
 That means different groups of values can have their own local scale rather than forcing a whole tensor to share one scale.
@@ -440,7 +529,7 @@ But apparently:
 
 > **How those four bits are used matters too.**
 
-**[IMAGE PLACEHOLDER - NVFP4 BLOCK SCALING DIAGRAM]**
+![NVFP4_Scaling](/assets/img/post3/nvfp4-scaling.png)
 
 And now I had another problem. 😂
 

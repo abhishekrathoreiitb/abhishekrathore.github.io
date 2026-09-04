@@ -588,7 +588,17 @@ Which means I now want to go back one layer and properly understand the runtimes
 And what actually happens between:
 
 ```
-Model   ↓Quantized Weights   ↓Inference Engine   ↓GPU Kernels   ↓Memory   ↓Tokens
+Model
+   ↓
+Quantized Weights
+   ↓
+Inference Engine
+   ↓
+GPU Kernels
+   ↓
+Memory
+   ↓
+Tokens
 ```
 
 I started this post wanting to understand quantization.

@@ -107,7 +107,7 @@ And finally, there is the hardware underneath it all.
 
 And the first thing that kept bothering me was **size**.
 
-# Why is the model so big?
+## Why is the model so big?
 
 Somewhere in this rabbit hole I had to stop and remind myself of something basic.
 
@@ -156,7 +156,7 @@ But the basic idea was now clear to me.
 
 And that made quantization suddenly much more interesting.
 
-# So what exactly happens when we reduce precision?
+## So what exactly happens when we reduce precision?
 
 This was another rabbit hole.
 
@@ -206,7 +206,7 @@ It's:
 
 And that's where quantization methods start becoming interesting.
 
-# Quantization is not one single thing
+## Quantization is not one single thing
 
 Once I sat with this long enough, quantization stopped looking like one giant blob of terminology.
 
@@ -214,7 +214,7 @@ It split into different concepts.
 
 One useful distinction was:
 
-## Quantization Flow Diagram
+### Quantization Flow Diagram
 
 ```mermaid
 flowchart TD
@@ -246,7 +246,7 @@ And then I found another axis I hadn't really thought about.
 
 **When does the quantization happen?**
 
-# PTQ vs QAT
+## PTQ vs QAT
 
 There are two broad approaches I kept seeing.
 
@@ -298,7 +298,7 @@ See what changes.
 
 So for my experiments, **PTQ was the obvious place to start.**
 
-# Time to stop reading and start measuring
+## Time to stop reading and start measuring
 
 I'd read enough theory.
 
@@ -368,7 +368,7 @@ I didn't want to trust a single run either.
 
 Cold starts include model loading, so I ran each precision three times and used the warm runs for the performance comparison.
 
-# The numbers
+## The numbers
 
 The results looked like this:
 
@@ -412,7 +412,7 @@ But in my setup, the relationship was very clear.
 
 At least for this experiment.
 
-# Same facts, different manners
+## Same facts, different manners
 
 The speed numbers were satisfying.
 
@@ -476,7 +476,7 @@ And **behaviour.**
 
 And I wanted to understand how much of that behaviour came from the quantization itself.
 
-# Just when FP8 felt like the answer
+## Just when FP8 felt like the answer
 
 Somewhere in all this reading, I kept seeing FP8 described as a very attractive balance between size, speed and quality.
 
@@ -558,7 +558,7 @@ Because there is no point finding an interesting quantization format if my runti
 
 And that's where this rabbit hole took another turn.
 
-# What's next?
+## What's next?
 
 Here's the thing that keeps happening to me with this machine.
 

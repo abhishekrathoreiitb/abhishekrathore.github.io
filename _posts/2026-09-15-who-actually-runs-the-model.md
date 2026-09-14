@@ -306,6 +306,7 @@ TensorRT-LLM increased from:
 
 > 20.65 → 159.76 tok/s
 
+![Experiment Graph](/assets/img/post4/experiment_graph.png)
 The aggregate throughput scaling looked like this:
 
 | Runtime            | N=1 → N=4 |

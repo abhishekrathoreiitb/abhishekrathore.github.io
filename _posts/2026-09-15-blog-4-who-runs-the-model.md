@@ -6,6 +6,7 @@ categories: [AI, Engineering]
 tags: [llm-inference, inference-engines, llama-cpp, ollama, vllm, tensorrt-llm, prefill, decode, kv-cache, continuous-batching, gpu-optimization]
 mermaid: true
 ---
+
 Another long story.
 
 At this point, I had a model. I had explored quantization. I even had a DGX Spark sitting on my desk.
@@ -276,7 +277,7 @@ I used a fixed long-context prompt, generated up to 512 tokens, and tested two c
 
 ### 5.1 Benchmark Results
 
-> ![Benchmark Excecution](/assets/img/post4/Benchmark_llm.png)
+![Benchmark Excecution](/assets/img/post4/Benchmark_llm.png)
 
 | Inference Engine   | Format | N   | Avg TTFT  | Avg Decode  | Aggregate Throughput | Output Tokens | Wall Time |
 | ------------------ | ------:| ---:| ---------:| -----------:| --------------------:| -------------:| ---------:|

@@ -6,7 +6,6 @@ categories: [AI, Engineering]
 tags: [llm-inference, inference-engines, llama-cpp, ollama, vllm, tensorrt-llm, prefill, decode, kv-cache, continuous-batching, gpu-optimization]
 mermaid: true
 ---
-
 Another long story.
 
 At this point, I had a model. I had explored quantization. I even had a DGX Spark sitting on my desk.

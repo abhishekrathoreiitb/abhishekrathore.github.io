@@ -72,7 +72,7 @@ Detokenizer
 Streamed Answer
 ```
 
-> ![Inference Journey](/assets/img/post4/inference_journey.png)
+![Inference Journey](/assets/img/post4/inference_journey.png)
 
 This was probably the first diagram that made inference click for me.
 
@@ -97,7 +97,7 @@ My first practical stop was **llama.cpp**.
 
 I initially thought it was simply a tool for running `.gguf` models. But after looking at its structure, I realized it was an entire inference stack.
 
-> ![llama cpp Architecture](/assets/img/post4/llma_cpp_architecture.png)
+![llama cpp Architecture](/assets/img/post4/llma_cpp_architecture.png)
 
 The `llama-cli` and `llama-server` provide user-facing interfaces, while `libllama` coordinates the inference process.
 
@@ -236,7 +236,7 @@ With a simple allocation strategy, the engine may reserve large regions of memor
 
 More advanced approaches divide KV-cache memory into smaller blocks and reuse those blocks as requests arrive and finish. Combined with continuous batching, this allows the engine to keep the GPU busy while managing memory more flexibly.
 
-> ![KV Cache Tetris](/assets/img/post4/batching_Tetris.png)
+![KV Cache Tetris](/assets/img/post4/batching_Tetris.png)
 
 This was the point where batching stopped looking like just a performance trick.
 

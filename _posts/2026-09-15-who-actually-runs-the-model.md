@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "So… Who Actually Runs the Model?"
-date: 2026-09-15 13:18:00 +0530
+date: 2026-09-15 01:00:00 +0530
 categories: [AI, Engineering]
 tags: [llm-inference, inference-engines, llama-cpp, ollama, vllm, tensorrt-llm, prefill, decode, kv-cache, continuous-batching, gpu-optimization]
 mermaid: true

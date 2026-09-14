@@ -1,4 +1,11 @@
-# So… Who Actually Runs the Model?
+---
+layout: post
+title: "So… Who Actually Runs the Model?"
+date: 2026-09-15 13:18:00 +0530
+categories: [AI, Engineering]
+tags: [llm-inference, inference-engines, llama-cpp, ollama, vllm, tensorrt-llm, prefill, decode, kv-cache, continuous-batching, gpu-optimization]
+mermaid: true
+---
 
 Another long story.
 
@@ -65,7 +72,7 @@ Detokenizer
 Streamed Answer
 ```
 
-> **IMAGE 1 — Keep the inference pipeline diagram here.**
+> ![Inference Journey](/assets/img/post4/inference_journey.png)
 
 This was probably the first diagram that made inference click for me.
 
@@ -90,7 +97,7 @@ My first practical stop was **llama.cpp**.
 
 I initially thought it was simply a tool for running `.gguf` models. But after looking at its structure, I realized it was an entire inference stack.
 
-> **IMAGE 2 — Keep the llama.cpp architecture diagram here.**
+> ![llama cpp Architecture](/assets/img/post4/llma_cpp_architecture.png)
 
 The `llama-cli` and `llama-server` provide user-facing interfaces, while `libllama` coordinates the inference process.
 
@@ -229,7 +236,7 @@ With a simple allocation strategy, the engine may reserve large regions of memor
 
 More advanced approaches divide KV-cache memory into smaller blocks and reuse those blocks as requests arrive and finish. Combined with continuous batching, this allows the engine to keep the GPU busy while managing memory more flexibly.
 
-> **IMAGE 3 — Keep the KV-cache/Tetris analogy illustration here.**
+> ![KV Cache Tetris](/assets/img/post4/batching_Tetris.png)
 
 This was the point where batching stopped looking like just a performance trick.
 
@@ -270,7 +277,7 @@ I used a fixed long-context prompt, generated up to 512 tokens, and tested two c
 
 ### 5.1 Benchmark Results
 
-> **IMAGE 4 — Optional: Keep a benchmark execution or GPU-monitoring screenshot here. Do not replace the table with this image.**
+> ![Benchmark Excecution](/assets/img/post4/Benchmark_llm.png)
 
 | Inference Engine   | Format | N   | Avg TTFT  | Avg Decode  | Aggregate Throughput | Output Tokens | Wall Time |
 | ------------------ | ------:| ---:| ---------:| -----------:| --------------------:| -------------:| ---------:|
